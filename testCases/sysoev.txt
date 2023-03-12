@@ -1,0 +1,172 @@
+Проверка API и запросов по url localhost:8000/api/tasks/
+
+Предусловие: запустить бэк, настроить postman на localhost:8000/api/tasks/, иметь в бд записи
+Step1: 
+    Пользователь отправляет запрос:
+        get
+    Ожидаемый результат: 
+    [
+    {
+        "id": 10,
+        "name": "КР!!!",
+        "description": "теорвер",
+        "is_done": false,
+        "priority": 1
+    },
+    {
+        "id": 3,
+        "name": "thirdname",
+        "description": "descr3",
+        "is_done": true,
+        "priority": 2
+    },
+    {
+        "id": 5,
+        "name": "Какое то имя",
+        "description": "Описание бла бла бла",
+        "is_done": true,
+        "priority": 2
+    },
+    {
+        "id": 12,
+        "name": "фаофа",
+        "description": "авф",
+        "is_done": false,
+        "priority": 3
+    }
+    ]
+    Фактический результат: 
+    [
+    {
+        "id": 10,
+        "name": "КР!!!",
+        "description": "теорвер",
+        "is_done": false,
+        "priority": 1
+    },
+    {
+        "id": 3,
+        "name": "thirdname",
+        "description": "descr3",
+        "is_done": true,
+        "priority": 2
+    },
+    {
+        "id": 5,
+        "name": "Какое то имя",
+        "description": "Описание бла бла бла",
+        "is_done": true,
+        "priority": 2
+    },
+    {
+        "id": 12,
+        "name": "фаофа",
+        "description": "авф",
+        "is_done": false,
+        "priority": 3
+    }
+    ]
+Step2: 
+    Пользователь отправляет post запрос:
+    {
+        "name": "Название задачи",
+        "description": "Описание задачи",
+        "is_done": false,
+        "priority": 1
+    }
+    Ожидаемый результат: 
+    {
+        "id": 13,
+        "name": "Название задачи",
+        "description": "Описание задачи",
+        "is_done": false,
+        "priority": 1
+    }
+    Фактический результат: 
+    {
+        "id": 13,
+        "name": "Название задачи",
+        "description": "Описание задачи",
+        "is_done": false,
+        "priority": 1
+    }
+Step3: 
+    Пользователь отправляет post запрос:
+    {
+        "name": "Название задачи",
+        "description": "Описание задачи",
+        "is_done": false,
+        "priority": 1
+    }
+    Ожидаемый результат: 
+    {
+        "id": 13,
+        "name": "Название задачи",
+        "description": "Описание задачи",
+        "is_done": false,
+        "priority": 1
+    }
+    Фактический результат: 
+    {
+        "id": 13,
+        "name": "Название задачи",
+        "description": "Описание задачи",
+        "is_done": false,
+        "priority": 1
+    }
+    Status: Pass
+
+Проверка API и запросов по url localhost:8000/api/tasks/<id>
+
+Предусловие: запустить бэк, настроить postman на localhost:8000/api/tasks/10, иметь в бд запись с "id": 10
+Step1: 
+    Пользователь отправляет get запрос
+    Ожидаемый результат: 
+    {
+        "id": 10,
+        "name": "КР!!!",
+        "description": "теорвер",
+        "is_done": false,
+        "priority": 1
+    }
+    Фактический результат: 
+    {
+        "id": 10,
+        "name": "КР!!!",
+        "description": "теорвер",
+        "is_done": false,
+        "priority": 1
+    }
+
+Step2:
+    Пользователь отправляет put запрос
+    Тестовые данные:
+    {
+        "id": 10,
+        "name": "КР!!!",
+        "description": "теорвер",
+        "is_done": true,
+        "priority": 1
+    }
+    Ожидаемый результат: 
+    {
+        "id": 10,
+        "name": "КР!!!",
+        "description": "теорвер",
+        "is_done": true,
+        "priority": 1
+    }
+    Фактический результат: 
+    {
+        "id": 10,
+        "name": "КР!!!",
+        "description": "теорвер",
+        "is_done": true,
+        "priority": 1
+    }
+    Пользователь отправляет delete запрос
+    Ожидаемый результат:
+        Удаление элемента бд с "id": 10
+    Фактический результат:
+        Удаление элемента бд с "id": 10
+  Status: Pass
